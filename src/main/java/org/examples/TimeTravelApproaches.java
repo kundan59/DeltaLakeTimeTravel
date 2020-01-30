@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 /**
  * TimeTravelApproaches is a class to illustrate Time travel approaches in Delta lake.
  */
-public class TimeTravelApproaches {
+public final class TimeTravelApproaches {
 
     private static final Logger LOGGER = Logger.getLogger(DeltaLakeTimeTravel.class);
 
