@@ -22,6 +22,11 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
@@ -53,11 +58,30 @@
             <artifactId>httpcore</artifactId>
             <version>4.3.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>15.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>org.examples.DeltaLakeTimeTravel</mainClass>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -78,13 +102,6 @@
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <overWriteReleases>true</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <overWriteIfNewer>true</overWriteIfNewer>
-                            <excludeTransitive>false</excludeTransitive>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -94,19 +111,11 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <excludes>
-                        <exclude>**/test</exclude>
-                        <exclude>**/test/*.class</exclude>
-                    </excludes>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib</classpathPrefix>
-                            <useUniqueVersions>false</useUniqueVersions>
+                            <mainClass>org.examples.DeltaLakeTimeTravel</mainClass>
                         </manifest>
-                        <manifestEntries>
-                            <Class-Path>./conf/</Class-Path>
-                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
