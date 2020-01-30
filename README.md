@@ -10,9 +10,10 @@ b. timestamp - timeTravelUsingTimeStamp()
 It also contains a method to get the audit log of the changes made to the table - getLatestHistory()
 
 ## Table of contents  
-1. [Getting Started](#Getting-Started)  
-2. [How to Use](#How-to-Use)  
-3. [How to Run](#How-to-Run)  
+1. [Getting Started](#Getting-Started) 
+2. [How to Run](#How-to-Run) 
+3. [How to Use](#How-to-Use)  
+ 
 
   
 ## Getting Started  
@@ -20,44 +21,13 @@ It also contains a method to get the audit log of the changes made to the table 
 To run the SDK you will need  **Java 1.8+, Scala 2.11.8 **.   Also you need to install spark** as prerequisites
   
 #### Installation  
-The way to use this project is to clone it from github and build it using sbt.  
-  
-## How to use   
-We need to extend the `StreamingDriver` trait and override the run method and write the job operations there.  
+The way to use this project is to clone it from github and build it using maven.
 
-  
-```scala  
-object ExampleDeltalake extends StreamingDriver {
-
- import InputSource.sparkSession.implicits._
-
- override def run(dataSet: Dataset[String]) = {
-
-    // your codes here
-
-   }
-
-}
-
-```  
-  
-#### Abstract Methods  
-```scala 
- 
-override def run(dataSet: Dataset[String]) : Unit
-
-```  
-  
-#### Concrete Methods  
-  
-The available concrete methods are -   
-  
-```scala  
-def takeInput(): DataFrame
- 
-def writeToDelta(outputDataFrame: DataFrame, filePath: String, checkPointPath: String)
-
-```  
 ## How to Run 
+1. ```mvn clean install```
+2. ```mvn exec:java```
+After running the project, you should see execution outputs of running sample job 1 and job 2, which updates the delta table written by job 1.
+Finally, you can see the original delta table created by job 1 using version number and then using timestamp.
 
-
+## How to Use
+You need to instantiate TimeTravelApproaches() class in your project and call the required method using parameters.
