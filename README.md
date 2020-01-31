@@ -24,6 +24,7 @@ To run the SDK you will need  **Java 1.8+, Scala 2.11.8 **.   Also you need to i
 The way to use this project is to clone it from github and build it using maven.
 
 ## How to Run 
+Open terminal in project folder and execute these commands:
 1. ```mvn clean install```
 2. ```mvn exec:java```
 After running the project, you should see execution outputs of running sample job 1 and job 2, which updates the delta table written by job 1.
