@@ -1,5 +1,6 @@
 # Time travel with delta-lake
-  
+Databricks Delta, the next-gen unified analytics engine built on top of Apache Spark, introduces unique Time Travel capabilities. 
+
 The project consists of 3 java files:
 1. CreateJobs - This is a sample class which runs two jobs. Job-1 writes to delta lake and Job-2 updates the record written by Job-1.
 It consists of methods which are mostly used while a job is related to apache spark and write into delta lake.  
